@@ -1,0 +1,460 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb {
+  font-size: smaller;
+}
+
+/* ——— MAGNet-style full-width layout ([MAGNet](https://von31.github.io/MAGNet/)) ——— */
+
+.magnet-body {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.magnet-shell {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+.magnet-sidebar {
+  --magnet-sidebar-w: 360px;
+  flex: 0 0 var(--magnet-sidebar-w);
+  width: var(--magnet-sidebar-w);
+  max-width: min(90vw, 420px);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  border-right: 1px solid #d9d9d9;
+  background: #f4f4f5;
+  overflow-y: auto;
+}
+
+.magnet-sidebar-inner {
+  padding: 2.25rem 1.65rem 3rem;
+}
+
+.magnet-brand {
+  display: block;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.65rem;
+  line-height: 1.2;
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+.magnet-brand:hover .magnet-brand-rest {
+  color: #000;
+}
+
+/* Google logo palette: https://about.google/brand-resource-center/ */
+.magnet-brand-g-blue {
+  color: #4285f4;
+}
+
+.magnet-brand-g-red {
+  color: #ea4335;
+}
+
+.magnet-brand-g-yellow {
+  color: #fbbc05;
+}
+
+.magnet-brand-g-green {
+  color: #34a853;
+}
+
+.magnet-brand-rest {
+  color: #111;
+  font-weight: 700;
+}
+
+.magnet-nav-heading {
+  font-family: 'Castoro', 'Georgia', serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #333;
+  margin: 0 0 1.15rem 0;
+}
+
+.magnet-nav-list,
+.magnet-nav-sub {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.magnet-nav-list > li {
+  margin: 0.85rem 0;
+}
+
+.magnet-nav a {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #2e2e2e;
+  text-decoration: none;
+  padding: 0.35rem 0.6rem 0.35rem 0.85rem;
+  border-left: 4px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, font-weight 0.15s ease;
+}
+
+.magnet-nav a:hover {
+  color: #000;
+}
+
+.magnet-nav a.is-active {
+  border-left-color: #6e6e6e;
+  color: #000;
+  font-weight: 600;
+}
+
+.magnet-nav-sub {
+  margin: 0.65rem 0 0.35rem 0.75rem;
+}
+
+.magnet-nav-sub li {
+  margin: 0.55rem 0;
+}
+
+.magnet-nav-sub a {
+  font-size: 1.1rem;
+  color: #3a3a3a;
+  padding-left: 1.1rem;
+}
+
+.magnet-main {
+  --magnet-pad-x: clamp(1.25rem, 4vw, 4rem);
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: clamp(1.5rem, 3vw, 2.75rem) var(--magnet-pad-x) 4rem;
+}
+
+.magnet-header {
+  margin-bottom: 2.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.magnet-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 2.2vw + 1rem, 2.85rem);
+  line-height: 1.18;
+  color: #111;
+  margin: 0;
+  max-width: none;
+}
+
+.magnet-title-suffix {
+  color: #111;
+  font-weight: 700;
+}
+
+.magnet-authors {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.22rem;
+  margin: 1.1rem 0 0.35rem;
+  color: #222;
+}
+
+.magnet-venue {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 0 0 1.25rem;
+}
+
+.magnet-actions {
+  margin-top: 0.5rem;
+}
+
+.magnet-btn {
+  font-size: 1.05rem !important;
+}
+
+.magnet-section {
+  margin: 0;
+  padding: 0.25rem 0 2.25rem;
+}
+
+.magnet-section--alt {
+  background: #f7f7f8;
+  margin-left: calc(-1 * var(--magnet-pad-x));
+  margin-right: calc(-1 * var(--magnet-pad-x));
+  padding-left: var(--magnet-pad-x);
+  padding-right: var(--magnet-pad-x);
+  padding-top: 1.75rem;
+  padding-bottom: 2.25rem;
+}
+
+.magnet-h2 {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.55rem, 1.1vw + 1.2rem, 2.05rem);
+  line-height: 1.25;
+  color: #111;
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.magnet-section .magnet-h2:first-child {
+  margin-top: 0;
+}
+
+.magnet-h3 {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: #1a1a1a;
+  margin: 2rem 0 0.65rem;
+}
+
+.magnet-prose {
+  max-width: none;
+}
+
+.magnet-prose p {
+  margin: 0 0 1.15em;
+}
+
+.magnet-prose ul,
+.magnet-prose ol {
+  margin: 0 0 1.15em 1.25em;
+}
+
+.magnet-prose li {
+  margin: 0.35em 0;
+}
+
+.magnet-notice {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.magnet-notice code {
+  font-size: 0.95em;
+}
+
+.magnet-note {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 0.75rem !important;
+}
+
+.magnet-bib {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.magnet-footer {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #ddd;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #666;
+}
+
+.magnet-footer a {
+  color: #3273dc;
+  text-decoration: underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.magnet-main [id] {
+  scroll-margin-top: 88px;
+}
+
+@media screen and (max-width: 900px) {
+  .magnet-shell {
+    flex-direction: column;
+  }
+
+  .magnet-sidebar {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .magnet-sidebar-inner {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .magnet-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+  }
+
+  .magnet-nav-list > li {
+    margin: 0;
+  }
+
+  .magnet-nav-group {
+    width: 100%;
+  }
+
+  .magnet-nav-sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-left: 0;
+    margin-top: 0.35rem;
+  }
+
+  .magnet-nav a {
+    display: inline-block;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.4rem 0.2rem;
+    font-size: 1.1rem;
+  }
+
+  .magnet-nav-sub a {
+    font-size: 1.02rem;
+  }
+
+  .magnet-nav a.is-active {
+    border-left: none;
+    border-bottom-color: #6e6e6e;
+  }
+
+  .magnet-nav-heading {
+    font-size: 1rem;
+  }
+
+  .magnet-brand {
+    font-size: 1.45rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .magnet-body {
+    font-size: 1.0625rem;
+  }
+}

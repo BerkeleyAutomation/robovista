@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="RoboVista: expert-annotated VQA benchmark evaluating Vision–Language Models across diverse robot applications—474 questions, 39 task types, 6 domains.">
+  <meta property="og:title" content="RoboVista: Evaluating Vision Language Models for Diverse Robot Applications"/>
+  <meta property="og:description" content="RQA framework and RoboVista benchmark for modular robot-centric VQA with physical validation."/>
+  <meta property="og:url" content="https://example.org/RoboVista/"/>
+  <meta property="og:image" content="static/images/Wizard_Icon.png"/>
+  <meta name="twitter:title" content="RoboVista: Evaluating VLMs for Diverse Robot Applications">
+  <meta name="twitter:description" content="474 VQAs · 39 tasks · agricultural, industrial, domestic, surgical, driving, and open robot data.">
+  <meta name="twitter:image" content="static/images/Wizard_Icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="keywords" content="robotics, VLM, VQA, benchmark, RQA, RoboVista, RSS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>RoboVista | Evaluating VLMs for Diverse Robot Applications</title>
+  <link rel="icon" type="image/png" href="static/images/Wizard_Icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js" defer></script>
+</head>
+<body class="magnet-body">
+
+  <div class="magnet-shell">
+    <aside class="magnet-sidebar" aria-label="Site navigation">
+      <div class="magnet-sidebar-inner">
+        <a class="magnet-brand" href="#" aria-label="RoboVista home">
+          <span class="magnet-brand-g magnet-brand-g-blue">R</span><span class="magnet-brand-g magnet-brand-g-red">o</span><span class="magnet-brand-g magnet-brand-g-yellow">b</span><span class="magnet-brand-g magnet-brand-g-green">o</span><span class="magnet-brand-rest">Vista</span>
+        </a>
+        <p class="magnet-nav-heading">Navigation</p>
+        <nav class="magnet-nav" id="contents-nav">
+          <ul class="magnet-nav-list">
+            <li><a href="#introduction" data-toc-id="introduction">Introduction</a></li>
+            <li><a href="#rqa" data-toc-id="rqa">RQA Framework</a></li>
+            <li><a href="#benchmark" data-toc-id="benchmark">RoboVista Benchmark</a></li>
+            <li class="magnet-nav-group">
+              <a href="#evaluation" data-toc-id="evaluation">Evaluation and Results</a>
+              <ul class="magnet-nav-sub">
+                <li><a href="#eval-benchmark" data-toc-id="eval-benchmark">Benchmark results</a></li>
+                <li><a href="#eval-physical" data-toc-id="eval-physical">Physical validation</a></li>
+              </ul>
+            </li>
+            <li><a href="#conclusion" data-toc-id="conclusion">Conclusion</a></li>
+            <li><a href="#references" data-toc-id="references">References</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="magnet-main">
+      <header class="magnet-header">
+        <h1 class="magnet-title" aria-label="RoboVista: Evaluating Vision Language Models for Diverse Robot Applications">
+          <span aria-hidden="true">
+            <span class="magnet-brand-g magnet-brand-g-blue">R</span><span class="magnet-brand-g magnet-brand-g-red">o</span><span class="magnet-brand-g magnet-brand-g-yellow">b</span><span class="magnet-brand-g magnet-brand-g-green">o</span><span class="magnet-brand-rest">Vista</span><span class="magnet-title-suffix">: Evaluating Vision Language Models for Diverse Robot Applications</span>
+          </span>
+        </h1>
+        <div class="magnet-authors publication-authors">
+          <span class="author-block"><a href="https://ehehee.github.io/" target="_blank" rel="noopener">Shuangyu Xie</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://keplerc.github.io/" target="_blank" rel="noopener">Kaiyuan Chen</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://autolab.berkeley.edu/people.shtml" target="_blank" rel="noopener">Ziyang Chen</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://simeonoa.github.io/" target="_blank" rel="noopener">Simeon Adebola</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://yixuanhuang98.github.io/" target="_blank" rel="noopener">Yixuan Huang</a><sup>3</sup>,</span>
+          <span class="author-block"><a href="https://www.linkedin.com/in/zehanma/" target="_blank" rel="noopener">Zehan Ma</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://scholar.google.com/citations?user=an0V-t4AAAAJ&hl=en" target="_blank" rel="noopener">Tianshuang Qiu</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://scholar.google.is/citations?hl=en&user=PZZZG6YAAAAJ" target="_blank" rel="noopener">Wentao Yuan</a><sup>2</sup>,</span>
+          <span class="author-block"><a href="https://engineering.princeton.edu/faculty/dhruv-shah" target="_blank" rel="noopener">Dhruv Shah</a><sup>2</sup>,</span>
+          <span class="author-block"><a href="https://scholar.google.com/citations?user=GuU6oA4AAAAJ&hl=en" target="_blank" rel="noopener">Pannag R Sanketi</a><sup>2</sup>,</span>
+          <span class="author-block"><a href="https://goldberg.berkeley.edu/" target="_blank" rel="noopener">Ken Goldberg</a><sup>1</sup></span>
+        </div>
+        <p class="magnet-authors" style="margin-top: 0.5rem;"><sup>1</sup>UC Berkeley, <sup>3</sup>Princeton University, <sup>2</sup>Google DeepMind · <sup>*</sup>Equal contribution</p>
+        <div class="magnet-actions">
+          <a href="#references" class="button is-dark is-rounded magnet-btn">
+            <span class="icon"><i class="ai ai-open-access"></i></span>
+            <span>References</span>
+          </a>
+        </div>
+      </header>
+
+      <section class="magnet-section" id="introduction">
+        <h2 class="magnet-h2">Introduction</h2>
+        <div class="magnet-prose">
+          <p>
+            Deploying robots in real-world domains such as industrial automation, agriculture, and surgery requires a general-purpose interface that can reason over diverse decisions, embodiments, and situations. Vision–Language Models (VLMs) are a promising backbone, but supporting real robot tasks demands consistent, spatially grounded decision-making—for example, judging whether a gasket is properly seated on an assembly line and choosing the correct next action.
+          </p>
+          <p>
+            Visual Question Answering (VQA) is a primary way to evaluate these capabilities: models receive images or videos and answer task-relevant questions that probe scene understanding and action selection. Existing robot-centric benchmarks often draw heavily from imitation-learning trajectories. Many real applications are <em>modular</em>: behaviors decompose into task-level decisions (sequencing, planning, recovery) that are hard to capture with end-to-end trajectories alone. We extend evaluation to these modular decisions across broader domains—especially where public data is scarce and critical decisions are handled by analytical pipelines.
+          </p>
+          <p>
+            We propose <strong>Robot Question Answering (RQA)</strong>, a modular evaluation framework, and <strong>RoboVista</strong>, a benchmark curated from real robotic systems, research papers, and expert annotations. RoboVista contains <strong>474</strong> multiple-choice VQAs with human-annotated reasoning, covering <strong>39</strong> unique task types across agricultural, industrial, domestic, and surgical robotics, autonomous driving, and open robot datasets. Experiments show that state-of-the-art VLMs still exhibit substantial gaps; physical robot experiments suggest <strong>strong correlation</strong> between RoboVista performance and real-world task execution.
+          </p>
+        </div>
+      </section>
+
+      <section class="magnet-section magnet-section--alt" id="rqa">
+        <h2 class="magnet-h2">RQA Framework</h2>
+        <div class="magnet-prose">
+          <p>
+            RQA systematically converts decision points from robot systems into a robot-centric VQA formulation. It mirrors modular robot pipelines: perception, high-level decision making, motion and action estimation, and failure recovery. Perception probes geometry, spatial relations, and physical interaction from robot-centric views. High-level decision making requires grounded task reasoning—goals, sequencing, and next steps under constraints. Motion and action awareness tests feasibility (reachability, collision, closed-loop feedback). Recovery and robustness assess failure detection and corrective actions.
+          </p>
+          <p>
+            Together, these stages provide a structured abstraction for diverse reasoning problems in a unified Robot–VQA interface, combining expert annotation, algorithmic execution, and automated question construction where appropriate.
+          </p>
+        </div>
+      </section>
+
+      <section class="magnet-section" id="benchmark">
+        <h2 class="magnet-h2">RoboVista Benchmark</h2>
+        <div class="magnet-prose">
+          <p>
+            RoboVista is an expert-annotated, robot-centric VQA benchmark. Each question is grounded in robot-visible or onboard visual observations and paired with detailed human reasoning. To ensure realism and consistency, questions are constructed and verified by <strong>human domain experts</strong> familiar with the underlying algorithms and task constraints.
+          </p>
+          <ul>
+            <li><strong>Scale:</strong> 474 multiple-choice questions with annotated reasoning.</li>
+            <li><strong>Coverage:</strong> 39 distinct task types across six areas—agriculture, industry, domestic settings, surgical robotics, autonomous driving, and open robot datasets.</li>
+            <li><strong>Focus:</strong> Fine-grained spatial understanding, embodied decision-making, variable embodiments, deformable objects and cluttered scenes, and long-horizon contextual understanding.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="magnet-section magnet-section--alt" id="evaluation">
+        <h2 class="magnet-h2">Evaluation and Results</h2>
+        <div class="magnet-prose">
+          <p>
+            We evaluate state-of-the-art VLMs on RoboVista with techniques such as Chain-of-Thought (CoT) and In-Context Learning (ICL). Results indicate substantial headroom across many application domains. Beyond the benchmark, we report physical validation—including a bi-manual spatial estimation task using domain-specific object geometry—and closed-loop VLM-guided surgical knot tying. Degradations in RoboVista scores align with reduced long-horizon task success, supporting RoboVista as a meaningful indicator of embodied performance.
+          </p>
+        </div>
+
+        <h3 class="magnet-h3" id="eval-benchmark">Benchmark results</h3>
+        <div class="magnet-prose">
+          <p>
+            Frontier VLMs are benchmarked on the full RoboVista suite with standardized prompting and optional reasoning strategies. Cross-domain analysis highlights where spatial grounding, long-horizon context, and failure-aware reasoning remain challenging relative to human expert performance.
+          </p>
+        </div>
+
+        <h3 class="magnet-h3" id="eval-physical">Physical validation</h3>
+        <div class="magnet-prose">
+          <p>
+            We complement the dataset with physical experiments: a bi-manual spatial estimation task that uses domain-specific object geometry as priors, and closed-loop VLM-guided surgical knot tying. Together, these studies suggest that RoboVista tracks task-level success in the real world—when RoboVista performance drops, long-horizon behavior degrades accordingly.
+          </p>
+        </div>
+        <div class="notification is-info is-light magnet-notice">
+          <p class="mb-0">
+            <strong>Video supplement.</strong> Add a teaser or results <code>&lt;video&gt;</code> or embedded player here when available (layout reference: <a href="https://von31.github.io/MAGNet/" target="_blank" rel="noopener">MAGNet</a>).
+          </p>
+        </div>
+      </section>
+
+      <section class="magnet-section" id="conclusion">
+        <h2 class="magnet-h2">Conclusion</h2>
+        <div class="magnet-prose">
+          <p>Our contributions are:</p>
+          <ol type="1">
+            <li><strong>RQA</strong> — a modular framework for constructing robot-centric VQAs from expert annotation, demonstration, and execution.</li>
+            <li><strong>RoboVista</strong> — a benchmark spanning diverse applications, scenes, and embodiments.</li>
+            <li><strong>Analysis</strong> — comprehensive evaluation of frontier VLMs, including cross-domain analysis, training studies, and complementary physical-robot validation.</li>
+          </ol>
+          <p>
+            We hope RoboVista and RQA help the community align VLMs with the modular structure of real robotic systems and close the gap between visual reasoning and reliable physical behavior.
+          </p>
+        </div>
+      </section>
+
+      <section class="magnet-section magnet-section--alt" id="references">
+        <h2 class="magnet-h2">References</h2>
+        <div class="magnet-prose">
+          <p class="magnet-note">Replace with the camera-ready BibTeX after acceptance and de-anonymization.</p>
+          <pre class="magnet-bib"><code>@misc{anonymous2026robovista,
+  title={RoboVista: Evaluating Vision Language Models for Diverse Robot Applications},
+  author={Anonymous},
+  year={2026},
+  note={Robotics: Science and Systems (RSS), under review},
+  url={https://YOUR-PAGE-URL/}
+}</code></pre>
+        </div>
+      </section>
+
+      <footer class="magnet-footer">
+        <p>
+          Layout inspired by <a href="https://von31.github.io/MAGNet/" target="_blank" rel="noopener">MAGNet</a> and the
+          <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.
+          Update links and metadata when the paper is public.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+</body>
+</html>
