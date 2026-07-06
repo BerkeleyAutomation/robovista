@@ -45,7 +45,7 @@ export const links = [
     href: 'https://huggingface.co/datasets/sy-xie/robovista',
   },
   { label: 'Benchmark', icon: 'data', href: '#benchmark' },
-  { label: 'Leaderboard', icon: 'leaderboard', href: null },
+  { label: 'Leaderboard', icon: 'leaderboard', href: asset('leaderboard.html') },
 ]
 
 export const tldr = {
