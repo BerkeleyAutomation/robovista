@@ -164,7 +164,7 @@
     <a class="backlink" href="https://berkeleyautomation.github.io/robovista/">← robovista home</a>
     <h1>RoboVista · eval board</h1>
     <p class="meta">Multiple-choice spatial-reasoning questions over robot scenes — 460 scored
-      (474 minus a 14-question blacklist). 22 models, each run with a <b>standard</b> and a
+      (474 minus a 14-question blacklist). 26 models, each run with a <b>standard</b> and a
       <b>chain-of-thought</b> prompt. <span class="mono">updated 2026-07-06</span></p>
     <p class="paper"><a href="https://berkeleyautomation.github.io/robovista/">RoboVista: Evaluating
       Vision-Language Models for Diverse Robot Applications</a><span class="venue">RSS 2026</span></p>
@@ -183,8 +183,8 @@
     </div>
     <div class="tile">
       <p class="eyebrow">Models evaluated</p>
-      <div class="big">22<small> total</small></div>
-      <div class="sub">18 open-weight · 4 API</div>
+      <div class="big">26<small> total</small></div>
+      <div class="sub">22 open-weight · 4 API</div>
     </div>
   </div>
 
@@ -200,8 +200,9 @@
 
   <section id="leaderboard">
     <h2>Leaderboard — standard vs chain-of-thought</h2>
-    <p class="caption">Sorted by standard-prompt accuracy. CoT helps the thinking-tuned variants and the
-      new Qwen3.6 dense model; it costs accuracy on most other open models.</p>
+    <p class="caption">Sorted by standard-prompt accuracy. CoT helps the Gemma 4 family (+3 to +4),
+      the thinking-tuned variants and the Qwen3.6 dense model; it costs accuracy on most other
+      open models.</p>
     <div class="card">
       <div class="legend">
         <span class="key"><span class="dot" style="background:var(--std)"></span>standard prompt</span>
@@ -267,6 +268,7 @@
     {"name":"gpt-5-0","w":"api","rel":"2025-08","new":false,"hl":false,"std":54.57,"cot":54.57,"SC":56.2,"PL":51.4,"dom":[52.8,70.0,62.4,46.7,59.4,54.2]},
     {"name":"qwen3.5-397b-a17b","w":"open","rel":"2026-02","new":true,"hl":true,"std":55.22,"cot":52.83,"SC":58.2,"PL":48.6,"dom":[52.8,60.0,48.2,41.7,81.2,64.6]},
     {"name":"qwen3.6-27b","w":"open","rel":"2026-04","new":true,"hl":false,"std":53.48,"cot":54.35,"SC":55.9,"PL":48.0,"dom":[50.9,65.0,45.9,39.2,71.9,64.6]},
+    {"name":"gemma4-31b","w":"open","rel":"2026-06","new":true,"hl":false,"std":51.52,"cot":55.43,"SC":54.9,"PL":43.9,"dom":[49.1,55.0,50.6,36.7,65.6,61.1]},
     {"name":"qwen3.6-35b-a3b","w":"open","rel":"2026-04","new":true,"hl":false,"std":50.87,"cot":50.0,"SC":52.9,"PL":45.9,"dom":[50.9,70.0,47.1,35.0,75.0,57.6]},
     {"name":"qwen3-vl-32b-thinking","w":"open","rel":"2025-10","new":false,"hl":false,"std":49.57,"cot":51.3,"SC":52.6,"PL":43.9,"dom":[49.1,55.0,45.9,40.0,65.6,56.2]},
     {"name":"gpt-4o","w":"api","rel":"2024-05","new":false,"hl":false,"std":48.48,"cot":null,"SC":52.6,"PL":40.5,"dom":[54.7,50.0,54.1,33.3,59.4,53.5]},
@@ -277,14 +279,17 @@
     {"name":"robobrain2.5-8b-nv","w":"open","rel":"2026-01","new":false,"hl":false,"std":45.65,"cot":40.43,"SC":47.1,"PL":42.6,"dom":[28.3,40.0,51.8,39.2,53.1,52.8]},
     {"name":"qwen3-vl-8b-thinking","w":"open","rel":"2025-10","new":false,"hl":false,"std":44.78,"cot":45.0,"SC":44.8,"PL":44.6,"dom":[45.3,55.0,38.8,32.5,59.4,53.5]},
     {"name":"robobrain2.5-8b-mt","w":"open","rel":"2026-01","new":false,"hl":false,"std":44.35,"cot":39.57,"SC":46.1,"PL":40.5,"dom":[35.8,55.0,48.2,37.5,40.6,50.0]},
+    {"name":"cosmos3-nano","w":"open","rel":"2026-06","new":true,"hl":false,"std":44.35,"cot":39.78,"SC":45.4,"PL":41.9,"dom":[35.8,50.0,45.9,34.2,56.2,51.4]},
     {"name":"qwen2.5-vl-72b","w":"open","rel":"2025-01","new":false,"hl":false,"std":43.26,"cot":41.74,"SC":45.1,"PL":39.2,"dom":[49.1,35.0,36.5,31.7,65.6,50.7]},
     {"name":"qwen3-vl-4b","w":"open","rel":"2025-10","new":false,"hl":false,"std":43.04,"cot":43.48,"SC":46.1,"PL":37.2,"dom":[37.7,45.0,42.4,35.0,40.6,52.8]},
     {"name":"qwen2.5-vl-32b","w":"open","rel":"2025-03","new":false,"hl":false,"std":43.04,"cot":36.52,"SC":44.4,"PL":40.5,"dom":[52.8,50.0,42.4,31.7,53.1,46.5]},
     {"name":"qwen2.5-vl-7b","w":"open","rel":"2025-01","new":false,"hl":false,"std":42.83,"cot":35.87,"SC":45.4,"PL":37.8,"dom":[37.7,45.0,43.5,34.2,43.8,51.4]},
     {"name":"molmo2-8b","w":"open","rel":"2025-12","new":true,"hl":false,"std":41.74,"cot":33.04,"SC":43.5,"PL":37.2,"dom":[37.7,55.0,42.4,34.2,56.2,43.1]},
+    {"name":"gemma4-12b","w":"open","rel":"2026-06","new":true,"hl":false,"std":41.74,"cot":45.43,"SC":44.1,"PL":37.8,"dom":[47.2,35.0,38.8,31.7,40.6,52.1]},
     {"name":"robo2vlm-1.5","w":"open","rel":"2025-05","new":false,"hl":false,"std":41.52,"cot":37.17,"SC":45.1,"PL":34.5,"dom":[35.8,40.0,40.0,34.2,43.8,50.7]},
     {"name":"cosmos-reason1-7b","w":"open","rel":"2025-03","new":true,"hl":false,"std":41.3,"cot":39.78,"SC":41.8,"PL":39.2,"dom":[37.7,50.0,36.5,27.5,53.1,52.1]},
-    {"name":"qwen2.5-vl-3b","w":"open","rel":"2025-01","new":false,"hl":false,"std":39.57,"cot":29.35,"SC":41.5,"PL":35.8,"dom":[30.2,40.0,42.4,29.2,50.0,47.9]}
+    {"name":"qwen2.5-vl-3b","w":"open","rel":"2025-01","new":false,"hl":false,"std":39.57,"cot":29.35,"SC":41.5,"PL":35.8,"dom":[30.2,40.0,42.4,29.2,50.0,47.9]},
+    {"name":"cosmos-reason2-2b","w":"open","rel":"2026-01","new":true,"hl":false,"std":38.26,"cot":33.48,"SC":39.5,"PL":35.1,"dom":[34.0,45.0,36.5,29.2,34.4,47.9]}
   ];
   // column order: agriculture, surgery, industry, home, driving, open data
   const DOM_ORDER = [0,4,3,2,1,5];
