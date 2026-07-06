@@ -36,15 +36,15 @@ export const paper = {
 
 // Set href to null to render a disabled/coming-soon button.
 export const links = [
-  { label: 'Paper', icon: 'paper', href: null },
-  { label: 'arXiv', icon: 'arxiv', href: null },
+  // Paper links to arXiv once the submission is approved (coming soon).
+  { label: 'Paper', icon: 'arxiv', href: null },
   { label: 'Code', icon: 'github', href: 'https://github.com/KeplerC/rqa' },
-  { label: 'Benchmark', icon: 'data', href: '#benchmark' },
   {
     label: 'Data',
     icon: 'data',
     href: 'https://huggingface.co/datasets/sy-xie/robovista',
   },
+  { label: 'Benchmark', icon: 'data', href: '#benchmark' },
   { label: 'Leaderboard', icon: 'leaderboard', href: null },
 ]
 
