@@ -38,7 +38,7 @@ export const paper = {
 export const links = [
   // Paper links to arXiv once the submission is approved (coming soon).
   { label: 'Paper', icon: 'arxiv', href: null },
-  { label: 'Code', icon: 'github', href: 'https://github.com/KeplerC/rqa' },
+  { label: 'Code', icon: 'github', href: 'https://github.com/ehehee/robovista' },
   {
     label: 'Data',
     icon: 'data',
