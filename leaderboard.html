@@ -40,8 +40,13 @@
   header .backlink:focus-visible { outline: 2px solid var(--std); outline-offset: 2px; border-radius: 3px; }
   header h1 { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 24px; font-weight: 600;
     letter-spacing: -0.02em; margin: 0 0 6px; text-wrap: balance; }
-  header .meta { color: var(--ink-2); font-size: 14px; margin: 0; max-width: 68ch; }
+  header .meta { color: var(--ink-2); font-size: 14px; margin: 0; }
   header .meta .mono { color: var(--muted); font-size: 12.5px; }
+  header .paper { color: var(--ink-2); font-size: 13.5px; margin: 8px 0 0; }
+  header .paper a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  header .paper a:hover, header .paper a:focus-visible { color: var(--std); }
+  header .paper .venue { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--muted);
+    border: 1px solid var(--baseline); border-radius: 3px; padding: 1px 6px; margin-left: 8px; white-space: nowrap; }
 
   .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 28px 0; }
   .tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 14px 16px 12px; }
@@ -53,7 +58,7 @@
   .tile .sub .mono { font-size: 11.5px; }
 
   section h2 { font-size: 15px; font-weight: 650; margin: 36px 0 4px; letter-spacing: -0.01em; }
-  section .caption { color: var(--ink-2); font-size: 13px; margin: 0 0 14px; max-width: 70ch; }
+  section .caption { color: var(--ink-2); font-size: 13px; margin: 0 0 14px; }
   .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 18px 18px 14px; }
 
   .legend { display: flex; gap: 18px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
@@ -124,6 +129,19 @@
   table.plain tbody tr:last-child td { border-bottom: none; }
   .table-scroll { overflow-x: auto; }
 
+  /* table of contents dropdown */
+  details.toc { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px;
+    margin: 0 0 8px; }
+  details.toc summary { cursor: pointer; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted);
+    user-select: none; list-style-position: inside; }
+  details.toc summary:hover, details.toc summary:focus-visible { color: var(--std); }
+  details.toc[open] summary { border-bottom: 1px solid var(--grid); }
+  details.toc ol { margin: 0; padding: 10px 16px 12px 36px; }
+  details.toc li { padding: 2px 0; font-size: 13.5px; color: var(--ink-2); }
+  details.toc a { color: var(--ink); text-decoration: none; }
+  details.toc a:hover, details.toc a:focus-visible { color: var(--std); text-decoration: underline; }
+
   .queue { display: flex; flex-wrap: wrap; gap: 8px; }
   .qchip { display: inline-flex; align-items: center; gap: 7px; font-family: ui-monospace, Menlo, monospace;
     font-size: 12px; border: 1px solid var(--ring); background: var(--surface); border-radius: 6px;
@@ -134,7 +152,7 @@
   .qchip.run .st { background: var(--cot); }
   .qchip .node { color: var(--muted); font-size: 10.5px; }
 
-  footer { margin-top: 36px; color: var(--muted); font-size: 12px; max-width: 76ch; }
+  footer { margin-top: 36px; color: var(--muted); font-size: 12px; }
   footer p { margin: 4px 0; }
   @media (prefers-reduced-motion: no-preference) { .row { transition: background 120ms ease; } }
 </style>
@@ -148,6 +166,8 @@
     <p class="meta">Multiple-choice spatial-reasoning questions over robot scenes — 460 scored
       (474 minus a 14-question blacklist). 22 models, each run with a <b>standard</b> and a
       <b>chain-of-thought</b> prompt. <span class="mono">updated 2026-07-06</span></p>
+    <p class="paper"><a href="https://berkeleyautomation.github.io/robovista/">RoboVista: Evaluating
+      Vision-Language Models for Diverse Robot Applications</a><span class="venue">RSS 2026</span></p>
   </header>
 
   <div class="tiles">
@@ -168,7 +188,17 @@
     </div>
   </div>
 
-  <section>
+  <details class="toc">
+    <summary>Contents</summary>
+    <ol>
+      <li><a href="#leaderboard">Leaderboard — standard vs chain-of-thought</a></li>
+      <li><a href="#domains">Accuracy by application domain</a></li>
+      <li><a href="#sc-pl">Scene understanding vs planning</a></li>
+      <li><a href="#all-runs">All runs</a></li>
+    </ol>
+  </details>
+
+  <section id="leaderboard">
     <h2>Leaderboard — standard vs chain-of-thought</h2>
     <p class="caption">Sorted by standard-prompt accuracy. CoT helps the thinking-tuned variants and the
       new Qwen3.6 dense model; it costs accuracy on most other open models.</p>
@@ -182,7 +212,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="domains">
     <h2>Accuracy by application domain</h2>
     <p class="caption">Standard-prompt runs. Domains follow the benchmark's taxonomy;
       <b>Driving</b> and <b>Surgery</b> are the smallest columns (n=20, n=32), so read those
@@ -192,7 +222,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="sc-pl">
     <h2>Scene understanding vs planning</h2>
     <p class="caption">Standard-prompt runs, split by ability type (SC n=306, PL n=148 — planning here
       bundles decision-making, motion awareness and recovery). Gemini holds its accuracy on planning
@@ -207,7 +237,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="all-runs">
     <h2>All runs</h2>
     <p class="caption">Exact figures for every completed pass.</p>
     <div class="card table-scroll">
