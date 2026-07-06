@@ -38,8 +38,14 @@ export const paper = {
 export const links = [
   { label: 'Paper', icon: 'paper', href: null },
   { label: 'arXiv', icon: 'arxiv', href: null },
-  { label: 'Code', icon: 'github', href: null },
+  { label: 'Code', icon: 'github', href: 'https://github.com/KeplerC/rqa' },
   { label: 'Benchmark', icon: 'data', href: '#benchmark' },
+  {
+    label: 'Data',
+    icon: 'data',
+    href: 'https://huggingface.co/datasets/sy-xie/robovista',
+  },
+  { label: 'Leaderboard', icon: 'leaderboard', href: null },
 ]
 
 export const tldr = {

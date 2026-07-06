@@ -57,6 +57,21 @@ export default function Hero() {
           <div className="eql-note">* {paper.equalContribNote}</div>
         )}
 
+        <div className="hero-logos">
+          <img
+            src={asset('static/images/logos/berkeley.png')}
+            alt="University of California, Berkeley"
+          />
+          <img
+            src={asset('static/images/logos/princeton.png')}
+            alt="Princeton University"
+          />
+          <img
+            src={asset('static/images/logos/deepmind.svg')}
+            alt="Google DeepMind"
+          />
+        </div>
+
         <div className="btn-row">
           {links.map((l) => {
             const disabled = !l.href

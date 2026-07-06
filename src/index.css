@@ -252,6 +252,27 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; }
 }
 .eql-note { color: var(--text-faint); font-size: 0.85rem; }
 
+/* ---------- Institute logos ---------- */
+.hero-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 26px;
+}
+.hero-logos img {
+  height: 52px;
+  width: auto;
+  max-width: 230px;
+  object-fit: contain;
+  background: transparent;
+}
+@media (max-width: 640px) {
+  .hero-logos { gap: 18px; }
+  .hero-logos img { height: 40px; }
+}
+
 /* ---------- Buttons ---------- */
 .btn-row {
   display: flex;

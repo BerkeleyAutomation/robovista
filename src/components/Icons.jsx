@@ -33,6 +33,12 @@ export function Icon({ name }) {
           <path d="M4 4h12a2 2 0 0 1 2 2v3l4-2.5v11L18 15v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
         </svg>
       )
+    case 'leaderboard':
+      return (
+        <svg {...base} className="ico" aria-hidden="true">
+          <path d="M3 13h4v8H3zm7-9h4v17h-4zm7 5h4v12h-4z" />
+        </svg>
+      )
     default:
       return null
   }
