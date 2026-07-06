@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://ehehee.github.io/robovista-test/",
+  "homepage": "https://berkeleyautomation.github.io/robovista/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
