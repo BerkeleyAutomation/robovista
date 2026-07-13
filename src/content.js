@@ -36,8 +36,7 @@ export const paper = {
 
 // Set href to null to render a disabled/coming-soon button.
 export const links = [
-  // Paper links to arXiv once the submission is approved (coming soon).
-  { label: 'Paper', icon: 'arxiv', href: null },
+  { label: 'Paper', icon: 'arxiv', href: 'https://arxiv.org/abs/2607.04610' },
   { label: 'Code', icon: 'github', href: 'https://github.com/ehehee/robovista' },
   {
     label: 'Data',
