@@ -164,8 +164,8 @@
     <a class="backlink" href="https://berkeleyautomation.github.io/robovista/">← robovista home</a>
     <h1>RoboVista · eval board</h1>
     <p class="meta">Multiple-choice spatial-reasoning questions over robot scenes — 460 scored
-      (474 minus a 14-question blacklist). 27 models, each run with a <b>standard</b> and a
-      <b>chain-of-thought</b> prompt. <span class="mono">updated 2026-07-06</span></p>
+      (474 minus a 14-question blacklist). 30 models, run with a <b>standard</b> and (for most) a
+      <b>chain-of-thought</b> prompt. <span class="mono">updated 2026-10-15</span></p>
     <p class="paper"><a href="https://berkeleyautomation.github.io/robovista/">RoboVista: Evaluating
       Vision-Language Models for Diverse Robot Applications</a><span class="venue">RSS 2026</span></p>
   </header>
@@ -173,18 +173,18 @@
   <div class="tiles">
     <div class="tile">
       <p class="eyebrow">Best overall</p>
-      <div class="big">68.9<small>%</small></div>
-      <div class="sub"><span class="mono">gemini-3-flash-preview</span> · API</div>
+      <div class="big">81.3<small>%</small></div>
+      <div class="sub"><span class="mono">gemini-4-argon</span> · API</div>
     </div>
     <div class="tile">
       <p class="eyebrow">Best open-weight · new</p>
       <div class="big">55.2<small>%</small></div>
-      <div class="sub"><span class="mono">qwen3.5-397b-a17b</span> · passes every GPT row</div>
+      <div class="sub"><span class="mono">qwen3.5-397b-a17b</span> · open-weight</div>
     </div>
     <div class="tile">
       <p class="eyebrow">Models evaluated</p>
-      <div class="big">27<small> total</small></div>
-      <div class="sub">23 open-weight · 4 API</div>
+      <div class="big">30<small> total</small></div>
+      <div class="sub">23 open-weight · 7 API</div>
     </div>
   </div>
 
@@ -226,8 +226,8 @@
   <section id="sc-pl">
     <h2>Scene understanding vs planning</h2>
     <p class="caption">Standard-prompt runs, split by ability type (SC n=306, PL n=148 — planning here
-      bundles decision-making, motion awareness and recovery). Gemini holds its accuracy on planning
-      questions; nearly every other model drops.</p>
+      bundles decision-making, motion awareness and recovery). gemini-4-argon and gpt-6-astra score
+      higher on planning than on scene questions and Gemini 3 Flash holds steady; nearly every other model drops.</p>
     <div class="card">
       <div class="legend">
         <span class="key"><span class="dot" style="background:var(--std)"></span>scene understanding</span>
@@ -256,6 +256,9 @@
     <p>Open-weight models served with SGLang / vLLM. Qwen3/3.6 rows use non-thinking mode; thinking-mode
       passes are separate rows. <span class="mono">molmo2-8b</span> has no system role in its chat template, so
       its runs carry the (identical) system prompt inside the user turn.</p>
+    <p><span class="mono">gemini-4-argon</span>, <span class="mono">gpt-6-astra</span> and
+      <span class="mono">claude-fable-5.1</span> were run through OpenRouter. <span class="mono">claude-fable-5.1</span> has no
+      chain-of-thought row: the provider refused every request with that prompt.</p>
   </footer>
 </div>
 
@@ -264,6 +267,9 @@
 <script>
   // {name, w, date, new, hl, std, cot, SC, PL, dom:[Agriculture, Driving, Home, Industry, Surgery, Open data]}
   const DATA = [
+    {"name":"gemini-4-argon","w":"api","rel":"2026-10","new":true,"hl":false,"std":81.3,"cot":81.3,"SC":80.7,"PL":81.8,"dom":[86.8,100.0,70.6,75.8,93.8,84.0]},
+    {"name":"gpt-6-astra","w":"api","rel":"2026-09","new":true,"hl":false,"std":75.0,"cot":73.91,"SC":74.5,"PL":75.7,"dom":[83.0,95.0,67.1,69.2,90.6,75.0]},
+    {"name":"claude-fable-5.1","w":"api","rel":"2026-09","new":true,"hl":false,"std":63.91,"cot":null,"SC":65.0,"PL":60.8,"dom":[69.8,85.0,57.6,57.5,84.4,62.5]},
     {"name":"gemini-3-flash-preview","w":"api","rel":"2025-12","new":false,"hl":false,"std":68.91,"cot":65.43,"SC":69.9,"PL":67.6,"dom":[69.8,75.0,64.7,60.0,87.5,74.3]},
     {"name":"gpt-5-0","w":"api","rel":"2025-08","new":false,"hl":false,"std":54.57,"cot":54.57,"SC":56.2,"PL":51.4,"dom":[52.8,70.0,62.4,46.7,59.4,54.2]},
     {"name":"qwen3.5-397b-a17b","w":"open","rel":"2026-02","new":true,"hl":true,"std":55.22,"cot":52.83,"SC":58.2,"PL":48.6,"dom":[52.8,60.0,48.2,41.7,81.2,64.6]},
@@ -297,7 +303,7 @@
   const DOMS = DOM_ORDER.map(i => ["Agriculture","Driving","Home","Industry","Surgery","Open data"][i]);
   const DOM_N = DOM_ORDER.map(i => [53,20,85,120,32,144][i]);
   DATA.forEach(d => { d.dom = DOM_ORDER.map(i => d.dom[i]); });
-  const MIN = 25, MAX = 72;
+  const MIN = 25, MAX = 85;
   const pct = v => ((v - MIN) / (MAX - MIN) * 100);
 
   const tip = document.getElementById("tip");
@@ -314,7 +320,7 @@
   function dumbbell(el, rows, colorClass, tipFn) {
     const grid = document.createElement("div");
     grid.className = "gridlayer";
-    for (let g = 30; g <= 70; g += 10) {
+    for (let g = 30; g <= 80; g += 10) {
       const d = document.createElement("div"); d.className = "g"; d.style.left = pct(g) + "%"; grid.appendChild(d);
     }
     el.appendChild(grid);
@@ -358,7 +364,7 @@
     axis.innerHTML = "<div></div><div class='ticks'></div><div></div>";
     el.appendChild(axis);
     const ticks = axis.querySelector(".ticks");
-    for (let g = 30; g <= 70; g += 10) {
+    for (let g = 30; g <= 80; g += 10) {
       const t = document.createElement("div"); t.className = "t"; t.style.left = pct(g) + "%"; t.textContent = g + "%";
       ticks.appendChild(t);
     }
@@ -367,7 +373,7 @@
   // chart 1: standard vs cot
   dumbbell(document.getElementById("chart"),
     DATA.map(d => ({ name: d.name, api: d.w === "api", a: d.std, b: d.cot, hl: d.hl, new: d.new, rel: d.rel,
-                     topLabel: d.name === "gemini-3-flash-preview" })),
+                     topLabel: d.name === "gemini-4-argon" })),
     "c-cot",
     (r, e) => tipHTML('<div class="t-name">' + r.name + (r.api ? " · API" : "") + '</div>'
       + '<div class="t-line"><span class="dot" style="background:var(--std)"></span>standard ' + r.a.toFixed(2) + '%</div>'
@@ -377,7 +383,7 @@
   const byPlan = DATA.slice().sort((x, y) => y.PL - x.PL);
   dumbbell(document.getElementById("chart2"),
     byPlan.map(d => ({ name: d.name, api: d.w === "api", a: d.SC, b: d.PL, hl: d.hl, new: d.new,
-                       topLabel: d.name === "gemini-3-flash-preview" })),
+                       topLabel: d.name === "gemini-4-argon" })),
     "c-plan",
     (r, e) => tipHTML('<div class="t-name">' + r.name + (r.api ? " · API" : "") + '</div>'
       + '<div class="t-line"><span class="dot" style="background:var(--std)"></span>scene ' + r.a.toFixed(1) + '%</div>'
