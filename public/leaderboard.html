@@ -257,7 +257,8 @@
       passes are separate rows. <span class="mono">molmo2-8b</span> has no system role in its chat template, so
       its runs carry the (identical) system prompt inside the user turn.</p>
     <p><span class="mono">gemini-4-argon</span>, <span class="mono">gpt-6-astra</span> and
-      <span class="mono">claude-fable-5.1</span> were run through OpenRouter with the standard prompt only.</p>
+      <span class="mono">claude-fable-5.1</span> were run through OpenRouter. <span class="mono">claude-fable-5.1</span> has no
+      chain-of-thought row: the provider refused every request with that prompt.</p>
   </footer>
 </div>
 
@@ -266,8 +267,8 @@
 <script>
   // {name, w, date, new, hl, std, cot, SC, PL, dom:[Agriculture, Driving, Home, Industry, Surgery, Open data]}
   const DATA = [
-    {"name":"gemini-4-argon","w":"api","rel":"2026-10","new":true,"hl":false,"std":81.3,"cot":null,"SC":80.7,"PL":81.8,"dom":[86.8,100.0,70.6,75.8,93.8,84.0]},
-    {"name":"gpt-6-astra","w":"api","rel":"2026-09","new":true,"hl":false,"std":75.0,"cot":null,"SC":74.5,"PL":75.7,"dom":[83.0,95.0,67.1,69.2,90.6,75.0]},
+    {"name":"gemini-4-argon","w":"api","rel":"2026-10","new":true,"hl":false,"std":81.3,"cot":81.3,"SC":80.7,"PL":81.8,"dom":[86.8,100.0,70.6,75.8,93.8,84.0]},
+    {"name":"gpt-6-astra","w":"api","rel":"2026-09","new":true,"hl":false,"std":75.0,"cot":73.91,"SC":74.5,"PL":75.7,"dom":[83.0,95.0,67.1,69.2,90.6,75.0]},
     {"name":"claude-fable-5.1","w":"api","rel":"2026-09","new":true,"hl":false,"std":63.91,"cot":null,"SC":65.0,"PL":60.8,"dom":[69.8,85.0,57.6,57.5,84.4,62.5]},
     {"name":"gemini-3-flash-preview","w":"api","rel":"2025-12","new":false,"hl":false,"std":68.91,"cot":65.43,"SC":69.9,"PL":67.6,"dom":[69.8,75.0,64.7,60.0,87.5,74.3]},
     {"name":"gpt-5-0","w":"api","rel":"2025-08","new":false,"hl":false,"std":54.57,"cot":54.57,"SC":56.2,"PL":51.4,"dom":[52.8,70.0,62.4,46.7,59.4,54.2]},
